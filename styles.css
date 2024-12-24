@@ -1,0 +1,184 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  /* 4 columnas de igual tamaño */
+    grid-template-rows: repeat(4, 1fr);     /* 4 filas de igual tamaño */
+    gap: 0;  /* No hay espacio entre las celdas */
+    width: 80vw;  /* Ajustar el tamaño del contenedor */
+    height: 80vw; /* Ajustar el tamaño del contenedor */
+    max-width: 400px;  /* Tamaño máximo del contenedor */
+    max-height: 400px; /* Tamaño máximo del contenedor */
+    position: relative;
+}
+
+.heart-piece {
+    width: 100%;  /* Las piezas ocupan el 100% del espacio disponible */
+    height: 100%; /* Las piezas ocupan el 100% del espacio disponible */
+    background-size: cover;  /* Usar cover para cubrir completamente el espacio */
+    background-repeat: no-repeat;
+    opacity: 0;  /* Inicialmente invisibles */
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out; /* Animación */
+}
+
+/* Posición inicial fuera del grid (lejos) */
+#piece-00 {
+    background-image: url('img/00.png');
+    grid-row: 1;
+    grid-column: 1;
+    transform: translate(-300px, -300px) rotate(0deg) scale(0.5); /* Lejos desde arriba a la izquierda */
+}
+
+#piece-01 {
+    background-image: url('img/01.png');
+    grid-row: 2;
+    grid-column: 1;
+    transform: translate(300px, -300px) rotate(0deg) scale(0.5); /* Lejos desde arriba a la derecha */
+}
+
+#piece-02 {
+    background-image: url('img/02.png');
+    grid-row: 3;
+    grid-column: 1;
+    transform: translate(-300px, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo a la izquierda */
+}
+
+#piece-03 {
+    background-image: url('img/03.png');
+    grid-row: 1;
+    grid-column: 4;
+    transform: translate(300px, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo a la derecha */
+}
+
+#piece-10 {
+    background-image: url('img/10.png');
+    grid-row: 1;
+    grid-column: 2;
+    transform: translate(-300px, 0) rotate(0deg) scale(0.5); /* Lejos desde la izquierda */
+}
+
+#piece-11 {
+    background-image: url('img/11.png');
+    grid-row: 2;
+    grid-column: 2;
+    transform: translate(0, 0) rotate(0deg) scale(0.5); /* Centrado en el grid */
+}
+
+#piece-12 {
+    background-image: url('img/12.png');
+    grid-row: 3;
+    grid-column: 2;
+    transform: translate(300px, 0) rotate(0deg) scale(0.5); /* Lejos desde la derecha */
+}
+
+#piece-13 {
+    background-image: url('img/13.png');
+    grid-row: 4;
+    grid-column: 2;
+    transform: translate(0, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo */
+}
+
+#piece-20 {
+    background-image: url('img/20.png');
+    grid-row: 1;
+    grid-column: 3;
+    transform: translate(-300px, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo a la izquierda */
+}
+
+#piece-21 {
+    background-image: url('img/21.png');
+    grid-row: 2;
+    grid-column: 3;
+    transform: translate(300px, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo a la derecha */
+}
+
+#piece-22 {
+    background-image: url('img/22.png');
+    grid-row: 3;
+    grid-column: 3;
+    transform: translate(0, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo */
+}
+
+#piece-23 {
+    background-image: url('img/23.png');
+    grid-row: 4;
+    grid-column: 3;
+    transform: translate(0, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo */
+}
+
+#piece-30 {
+    background-image: url('img/30.png');
+    grid-row: 1;
+    grid-column: 4;
+    transform: translate(-300px, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo a la izquierda */
+}
+
+#piece-31 {
+    background-image: url('img/31.png');
+    grid-row: 2;
+    grid-column: 4;
+    transform: translate(300px, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo a la derecha */
+}
+
+#piece-32 {
+    background-image: url('img/32.png');
+    grid-row: 3;
+    grid-column: 4;
+    transform: translate(0, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo */
+}
+
+#piece-33 {
+    background-image: url('img/33.png');
+    grid-row: 4;
+    grid-column: 4;
+    transform: translate(0, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo */
+}
+
+/* Asegúrate de que las imágenes no se recorten y se ajusten bien al espacio */
+.heart-piece img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantener la imagen ajustada sin recortes innecesarios */
+}
+
+/* Botón */
+#forgive-button {
+    margin-top: 20px;
+    background-color: #81C784;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    z-index: 1;  /* Asegura que el botón esté por encima de las piezas */
+}
+
+#forgive-button:hover {
+    background-color: #66BB6A;
+}
+
+/* Media queries para ajustar el diseño en diferentes tamaños de pantalla */
+@media (max-width: 600px) {
+    #container {
+        width: 90vw;
+        height: 90vw;
+    }
+
+    .heart-piece {
+        width: 22.5vw;
+        height: 22.5vw;
+    }
+}
