@@ -236,12 +236,13 @@ body {
 }
 
 #text-container {
+    box-shadow: 1px 1px 4px rgba(56, 55, 55, 0.733);
     margin: 1rem;
     border-radius: 1rem; 
     padding: 1rem;
-    background-color: #fff5d6;
+    background-color: #e0f7fa   ;
     margin-top: 20px;
     font-size: 1.2em;
-    color: #333;
+    color: #004d40 ;
 
 }
