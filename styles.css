@@ -9,6 +9,7 @@ body {
     height: 100vh;
     margin: 0;
     text-align: center;
+    overflow-x: hidden; /* Evitar desplazamiento lateral */
 }
 
 #container {
@@ -21,6 +22,7 @@ body {
     max-width: 400px;  /* Tamaño máximo del contenedor */
     max-height: 400px; /* Tamaño máximo del contenedor */
     position: relative;
+    overflow: hidden; /* Evitar desplazamiento lateral */
 }
 
 .heart-piece {
