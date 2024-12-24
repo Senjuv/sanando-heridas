@@ -204,6 +204,78 @@ body {
     object-fit: cover; /* Mantener la imagen ajustada sin recortes innecesarios */
 }
 
+/* Estilo del contenedor de texto */
+#text-container,
+#text-container-2 {
+    margin: 1rem;
+    border-radius: 1rem; 
+    padding: 1rem;
+    background-color: #f0f0f0;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+#text-container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-align: left;
+  
+}
+
+#text-2 {
+    visibility: hidden; /* Ocultar el segundo texto inicialmente */
+margin-top: -4rem;
+}
+
+/* Animación de salida del texto 1 */
+.text-exit-up {
+    animation: slideUp 1s ease-in forwards;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px); /* Se desplaza hacia arriba */
+        opacity: 0; /* Se desvanece */
+    }
+}
+
+/* Animación de entrada del texto 2 */
+.text-enter {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px); /* Empieza más abajo */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Llega a su posición original */
+    }
+}
+
+/* Animación de salida del texto 2 */
+.text-2-exit {
+    animation: fadeOutUp 1s ease-in forwards;
+}
+
+@keyframes fadeOutUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px); /* Se desplaza hacia arriba */
+        opacity: 0; /* Se desvanece */
+    }
+}
+
 /* Botón */
 #forgive-button {
     margin-top: 20px;
@@ -237,37 +309,14 @@ body {
 
 @media (min-width: 601px) and (max-width: 1024px) {
     #container {
-        width: 70vw;
-        height: 70vw;
+        width: 60vw;
+        height: 60vw;
     }
 
     .heart-piece {
-        width: 17.5vw;
-        height: 17.5vw;
+        width: 20vw;
+        height: 20vw;
     }
-}
-
-#text-container {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    border-radius: 1rem; 
-    padding: 1rem;
-    background-color: #f0f0f0;
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: #333;
-}
-
-#text-container-2 {
-    margin: 1rem;
-    border-radius: 1rem; 
-    padding: 1rem;
-    background-color: #f0f0f0;
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: #333;
-    visibility: hidden; /* En lugar de display: none */
- 
 }
 
 /* Animación de salida del texto 1 */
@@ -275,35 +324,13 @@ body {
     animation: slideUp 1s ease-in forwards;
 }
 
-@keyframes slideUp {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-50px); /* Se desplaza hacia arriba */
-        opacity: 0; /* Se desvanece */
-    }
-}
-
 /* Animación de entrada del texto 2 */
 .text-enter {
     animation: fadeInUp 1s ease-out forwards;
 }
 
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(50px); /* Empieza más abajo */
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(-50); /* Llega a su posición original */
-    }
-}
-
 /* Animación de salida del texto 2 */
-.text-2-exit {
+.text-exit-up {
     animation: fadeOutUp 1s ease-in forwards;
 }
 
@@ -315,5 +342,16 @@ body {
     100% {
         transform: translateY(-50px); /* Se desplaza hacia arriba */
         opacity: 0; /* Se desvanece */
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(50px); /* Aparece desde abajo */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
     }
 }

@@ -3,17 +3,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const textElement = document.getElementById("text");
     const textElement2 = document.getElementById("text-2");
     const text = "Siento lo ocurrido,<br>me siento muy arrepentida por lo que he hecho.<br>Por favor, perdóname.";
-    const text2 = "Te prometo que no volverá a ocurrir.<br>Te amo mucho.";
+    const text2 = "Te prometo que no volverá a ocurrir. Todos cometemos errores, es lo unico que nos hace humanos y nos hace sentir vivos.";
     let textIndex = 0;
     let pieceIndex = 0;
 
+    // Mostrar las piezas del corazón una por una
     function showNextPiece() {
         if (pieceIndex < pieces.length) {
             pieces[pieceIndex].style.opacity = 1;
             pieceIndex++;
-            setTimeout(showNextPiece, 700); // Ajusta el tiempo entre piezas
+            setTimeout(showNextPiece, 700); // Tiempo entre cada pieza
         }
     }
+
+    // Mostrar texto con efecto de tipeo
     function showNextCharacter() {
         if (textIndex < text.length) {
             if (text[textIndex] === '<') {
@@ -24,49 +27,54 @@ document.addEventListener("DOMContentLoaded", () => {
                 textElement.innerHTML += text[textIndex];
                 textIndex++;
             }
-            setTimeout(showNextCharacter, 100); // Ajusta el tiempo entre caracteres
+            setTimeout(showNextCharacter, 100); // Tiempo entre cada carácter
         } else {
-            // Animar el texto 1 para que desaparezca
+            // Animar la salida del texto 1
             setTimeout(() => {
-                textElement.classList.add('text-exit-up'); // Aplica la animación de salida
-                textElement.addEventListener(
-                    'animationend',
-                    () => {
-                        textElement.style.visibility = 'hidden'; // Oculta el texto 1 después de la animación
-                        textElement2.style.visibility = 'visible'; // Asegura que el texto 2 sea visible
-                        textElement2.classList.add('text-enter'); // Aplica la animación de entrada
-                        showNextCharacter2(); // Comienza la animación del texto 2
-                    },
-                    { once: true } // Asegura que el listener se ejecute solo una vez
-                );
-            }, 1000); // Espera 1 segundo antes de animar el texto 1
+                animateTextExit(textElement, () => {
+                    // Mostrar y animar la entrada del texto 2
+                    textElement2.style.visibility = 'visible';
+                    textElement2.classList.add('text-enter');
+                    showNextCharacter2();
+                });
+            }, 1000); // Esperar un segundo después de terminar el texto 1
         }
     }
-    
+
+    // Mostrar el segundo texto con efecto de tipeo
     function showNextCharacter2() {
         let text2Index = 0;
+
         function typeNextCharacter() {
             if (text2Index < text2.length) {
                 textElement2.innerHTML += text2[text2Index];
                 text2Index++;
-                setTimeout(typeNextCharacter, 100); // Ajusta el tiempo entre caracteres del segundo texto
+                setTimeout(typeNextCharacter, 100); // Tiempo entre cada carácter del texto 2
             } else {
-                // Cuando termina el texto 2, aplicamos la animación de salida
+                // Animar la salida del texto 2 después de escribirlo completamente
                 setTimeout(() => {
-                    textElement2.classList.add('text-2-exit'); // Aplica la animación de salida
-                    textElement2.addEventListener(
-                        'animationend',
-                        () => {
-                            textElement2.style.visibility = 'hidden'; // Oculta el texto 2 después de la animación
-                        },
-                        { once: true }
-                    );
-                }, 1000); // Espera 1 segundo después de completar el texto 2
+                    animateTextExit(textElement2); // Animación de salida del texto 2
+                }, 1000); // Esperar un segundo después de terminar el texto 2
             }
         }
+
         typeNextCharacter();
     }
 
+    // Función para animar la salida del texto
+    function animateTextExit(element, callback) {
+        element.classList.add('text-exit-up'); // Clase de animación de salida
+        element.addEventListener(
+            'animationend',
+            () => {
+                element.style.visibility = 'hidden'; // Ocultar el texto
+                if (callback) callback(); // Ejecutar el callback si existe
+            },
+            { once: true }
+        );
+    }
+
+    // Iniciar las animaciones
     showNextPiece();
     showNextCharacter();
 });
