@@ -22,7 +22,7 @@ body {
     max-width: 400px;  /* Tamaño máximo del contenedor */
     max-height: 400px; /* Tamaño máximo del contenedor */
     position: relative;
-    overflow: hidden; /* Evitar desplazamiento lateral */
+    overflow: hidden; /* Evitar que las piezas se desborden */
 }
 
 .heart-piece {
@@ -34,117 +34,167 @@ body {
     transition: transform 1s ease-in-out, opacity 1s ease-in-out; /* Animación */
 }
 
-/* Posición inicial fuera del grid (lejos) */
+@keyframes brokenGlass {
+    0% {
+        transform: translate(var(--translate-x), var(--translate-y)) rotate(var(--rotate)) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+.heart-piece {
+    animation: brokenGlass 5s ease-in-out forwards;
+}
+
+/* Posición inicial fuera del grid (aleatoria) */
 #piece-00 {
+    --translate-x: -200px;
+    --translate-y: -200px;
+    --rotate: -45deg;
     background-image: url('img/00.png');
     grid-row: 1;
     grid-column: 1;
-    transform: translate(-300px, -300px) rotate(0deg) scale(0.5); /* Lejos desde arriba a la izquierda */
 }
 
 #piece-01 {
+    --translate-x: 200px;
+    --translate-y: -200px;
+    --rotate: 45deg;
     background-image: url('img/01.png');
     grid-row: 2;
     grid-column: 1;
-    transform: translate(300px, -300px) rotate(0deg) scale(0.5); /* Lejos desde arriba a la derecha */
 }
 
 #piece-02 {
+    --translate-x: -200px;
+    --translate-y: 200px;
+    --rotate: -30deg;
     background-image: url('img/02.png');
     grid-row: 3;
     grid-column: 1;
-    transform: translate(-300px, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo a la izquierda */
 }
 
 #piece-03 {
+    --translate-x: 200px;
+    --translate-y: 200px;
+    --rotate: 30deg;
     background-image: url('img/03.png');
     grid-row: 1;
     grid-column: 4;
-    transform: translate(300px, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo a la derecha */
 }
 
 #piece-10 {
+    --translate-x: -200px;
+    --translate-y: 0;
+    --rotate: -60deg;
     background-image: url('img/10.png');
     grid-row: 1;
     grid-column: 2;
-    transform: translate(-300px, 0) rotate(0deg) scale(0.5); /* Lejos desde la izquierda */
 }
 
 #piece-11 {
+    --translate-x: 0;
+    --translate-y: 0;
+    --rotate: 0deg;
     background-image: url('img/11.png');
     grid-row: 2;
     grid-column: 2;
-    transform: translate(0, 0) rotate(0deg) scale(0.5); /* Centrado en el grid */
 }
 
 #piece-12 {
+    --translate-x: 200px;
+    --translate-y: 0;
+    --rotate: 60deg;
     background-image: url('img/12.png');
     grid-row: 3;
     grid-column: 2;
-    transform: translate(300px, 0) rotate(0deg) scale(0.5); /* Lejos desde la derecha */
 }
 
 #piece-13 {
+    --translate-x: 0;
+    --translate-y: 200px;
+    --rotate: -90deg;
     background-image: url('img/13.png');
     grid-row: 4;
     grid-column: 2;
-    transform: translate(0, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo */
 }
 
 #piece-20 {
+    --translate-x: -200px;
+    --translate-y: 200px;
+    --rotate: 90deg;
     background-image: url('img/20.png');
     grid-row: 1;
     grid-column: 3;
-    transform: translate(-300px, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo a la izquierda */
 }
 
 #piece-21 {
+    --translate-x: 200px;
+    --translate-y: 200px;
+    --rotate: -120deg;
     background-image: url('img/21.png');
     grid-row: 2;
     grid-column: 3;
-    transform: translate(300px, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo a la derecha */
 }
 
 #piece-22 {
+    --translate-x: 0;
+    --translate-y: 200px;
+    --rotate: 120deg;
     background-image: url('img/22.png');
     grid-row: 3;
     grid-column: 3;
-    transform: translate(0, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo */
 }
 
 #piece-23 {
+    --translate-x: 0;
+    --translate-y: 200px;
+    --rotate: -150deg;
     background-image: url('img/23.png');
     grid-row: 4;
     grid-column: 3;
-    transform: translate(0, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo */
 }
 
 #piece-30 {
+    --translate-x: -200px;
+    --translate-y: 200px;
+    --rotate: 150deg;
     background-image: url('img/30.png');
     grid-row: 1;
     grid-column: 4;
-    transform: translate(-300px, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo a la izquierda */
 }
 
 #piece-31 {
+    --translate-x: 200px;
+    --translate-y: 200px;
+    --rotate: -180deg;
     background-image: url('img/31.png');
     grid-row: 2;
     grid-column: 4;
-    transform: translate(300px, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo a la derecha */
 }
 
 #piece-32 {
+    --translate-x: 0;
+    --translate-y: 200px;
+    --rotate: 180deg;
     background-image: url('img/32.png');
     grid-row: 3;
     grid-column: 4;
-    transform: translate(0, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo */
 }
 
 #piece-33 {
+    --translate-x: 0;
+    --translate-y: 200px;
+    --rotate: -210deg;
     background-image: url('img/33.png');
     grid-row: 4;
     grid-column: 4;
-    transform: translate(0, 300px) rotate(0deg) scale(0.5); /* Lejos desde abajo */
 }
 
 /* Asegúrate de que las imágenes no se recorten y se ajusten bien al espacio */
@@ -183,4 +233,10 @@ body {
         width: 22.5vw;
         height: 22.5vw;
     }
+}
+
+#text-container {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333;
 }
