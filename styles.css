@@ -236,7 +236,12 @@ body {
 }
 
 #text-container {
+    margin: 1rem;
+    border-radius: 1rem; 
+    padding: 1rem;
+    background-color: #fff5d6;
     margin-top: 20px;
     font-size: 1.2em;
     color: #333;
+
 }
